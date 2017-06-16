@@ -17,7 +17,8 @@ TODO:
   - PWM support.
   - EXT support.
   - GPT support.
-  - SPI support.
-  - I2C support.
+  - USI SPI support.
+  - USI I2C support.
+  - USI UART support.
 
 Thank you.
