@@ -151,7 +151,13 @@ void _port_thread_start(void) {
   asm volatile ("movw    r30, r2");
   asm volatile ("icall");
   #if (__AVR_ARCH__ == 25)
-  asm volatile ("rcall    chThdExit"); /* Used for avr25 Architecture. */
+    #if defined(_CHIBIOS_RT_)
+    asm volatile ("rcall    chThdExit"); /* Used for avr25 Architecture. */
+    #endif
+
+    #if defined(_CHIBIOS_NIL_)
+    asm volatile ("rcall    chSysHalt"); /* Used for avr25 Architecture. */
+    #endif
   #else
   asm volatile ("call    chThdExit");  /* Used for avr5 Architecture. */
   #endif
